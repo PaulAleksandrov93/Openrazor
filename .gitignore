@@ -1,0 +1,22 @@
+# Python-specific
+*.pyc
+*.pyo
+*.pyd
+
+# Django-specific
+__pycache__/
+db.sqlite3
+
+# Node.js-specific
+node_modules/
+npm-debug.log
+
+# macOS-specific
+.DS_Store
+
+# Visual Studio Code-specific
+.vscode/
+
+# Editor-specific files
+*.sublime-project
+*.sublime-workspace

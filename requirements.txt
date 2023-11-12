@@ -1,0 +1,7 @@
+Django==3.2.8
+djangorestframework==3.12.4
+psycopg2-binary==2.9.1  # Драйвер для PostgreSQL
+django-cors-headers==3.9.0  # Для обработки CORS (если ваш фронтенд находится на другом домене)
+django-filter==2.4.0  # Для фильтрации запросов в Django REST framework
+django-environ==0.6.0  # Для управления переменными окружения
+djangorestframework-simplejwt==4.8.0

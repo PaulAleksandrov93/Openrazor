@@ -1,0 +1,19 @@
+# Файловая структура приложения
+openrazor/
+|-- openrazor_backend/
+|   |-- manage.py
+|   |-- openrazor_backend/
+|   |   |-- settings.py
+|   |   |-- ...
+|   |-- products/
+|   |-- ... (другие приложения Django)
+|-- openrazor_frontend/
+|   |-- src/
+|   |   |-- components/
+|   |   |-- ...
+|-- docker-compose.yml
+|-- backend.Dockerfile
+|-- frontend.Dockerfile
+|-- requirements.txt
+|-- .dockerignore
+|-- .gitignore
