@@ -5,3 +5,4 @@ django-cors-headers==3.9.0  # Для обработки CORS (если ваш ф
 django-filter==2.4.0  # Для фильтрации запросов в Django REST framework
 django-environ==0.6.0  # Для управления переменными окружения
 djangorestframework-simplejwt==4.8.0
+Pillow==8.3.2

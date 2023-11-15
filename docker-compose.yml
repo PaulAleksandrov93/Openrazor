@@ -24,8 +24,8 @@ services:
   
   frontend:
     build:
-      context: openrazor_frontend
-      dockerfile: frontend.Dockerfile 
+      context: .
+      dockerfile: frontend.Dockerfile
     command: npm start
     volumes:
       - ./openrazor_frontend:/app
