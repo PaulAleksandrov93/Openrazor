@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'products',
     'categories',
+    'profiles',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -88,7 +91,7 @@ DATABASES = {
         'NAME': 'your_database_name',
         'USER': 'your_database_user',
         'PASSWORD': 'your_database_password',
-        'HOST': 'db',  # Это имя сервиса контейнера PostgreSQL в Docker Compose
+        'HOST': 'db',  
         'PORT': '5432',
     }
 }
