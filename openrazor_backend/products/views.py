@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import JsonResponse
+from django.db.models import Q
 
 
 from .models import Product
@@ -80,3 +82,21 @@ def deleteProduct(request, pk):
     except Exception as e:
         logger.error(f'Произошла ошибка во время выполнения deleteProduct: {e}', exc_info=True)
         return Response({'error': 'Внутренняя ошибка сервера'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+@api_view(['GET'])
+def search_products(request):
+    query = request.GET.get('query', '')
+
+    if query:
+        # Используем Q-объекты для выполнения поиска по нескольким полям
+        search_results = Product.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(tags__icontains=query)
+        ).distinct()
+
+        serializer = ProductSerializer(search_results, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    return JsonResponse({'error': 'No search query provided'}, status=400)
