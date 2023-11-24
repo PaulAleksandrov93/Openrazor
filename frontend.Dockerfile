@@ -1,30 +1,21 @@
 # frontend.Dockerfile
 
 # Этап 1: Установка зависимостей и создание билда
-FROM node:14 AS builder
-
-WORKDIR /openrazor/openrazor_frontend
-
-COPY openrazor_frontend/package*.json ./
-
-RUN npm install
-
-# Устанавливаем рабочую директорию внутри openrazor_frontend
-WORKDIR /openrazor/openrazor_frontend
-
-COPY openrazor_frontend/public ./public
-COPY openrazor_frontend/src ./src
-# COPY openrazor_frontend/.env ./.env
-
-RUN npm run build
-
-# Этап 2: Копирование только необходимых файлов
-FROM node:14
+FROM node:16 AS builder
 
 WORKDIR /app/frontend
 
-# Копируем собранные файлы из правильного места
-COPY --from=builder /openrazor/openrazor_frontend/build /app/frontend/build
+# Копирование package.json и package-lock.json
+COPY openrazor_frontend/package*.json ./
 
-# Задание команды по умолчанию
+# Установка зависимостей
+RUN npm install
+
+# Копирование остальных файлов
+COPY openrazor_frontend/ .
+
+# Запуск сборки
+RUN npm run build
+
+# Этап 2: Задание команды по умолчанию
 CMD ["npm", "start"]

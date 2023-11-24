@@ -14,20 +14,20 @@ services:
     build:
       context: .
       dockerfile: backend.Dockerfile  
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
+    command: bash -c "dockerize -wait tcp://db:5432 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     depends_on:
       - db
-  
+    volumes:
+      - ./openrazor_backend:/app/openrazor_backend  
+
   frontend:
     build:
       context: .
       dockerfile: frontend.Dockerfile
     command: npm start
-    volumes:
-      - ./openrazor_frontend:/app
     ports:
       - "3000:3000"
+    volumes:
+      - ./openrazor_frontend:/app/openrazor_frontend
