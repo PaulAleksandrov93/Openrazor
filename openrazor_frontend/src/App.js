@@ -8,7 +8,6 @@ const AppWrapper = styled.div`
   font-family: 'Arial', sans-serif;
   background-color: #f5f5f5;
   color: #333;
-  padding: 20px;
 `;
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* Добавьте другие роуты для других страниц */}
         </Routes>
       </AppWrapper>
     </Router>

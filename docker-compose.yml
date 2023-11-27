@@ -26,8 +26,11 @@ services:
     build:
       context: .
       dockerfile: frontend.Dockerfile
-    command: npm start
+    command: sh -c "npm install && nodemon -L --watch /app/openrazor_frontend"
     ports:
       - "3000:3000"
     volumes:
-      - ./openrazor_frontend:/app/openrazor_frontend
+      - type: bind
+        source: ./openrazor_frontend
+        target: /app/openrazor_frontend
+        
