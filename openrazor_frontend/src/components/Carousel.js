@@ -26,10 +26,10 @@ const Carousel = () => {
     <CarouselWrapper>
       <Slider {...settings}>
         <div>
-          <CarouselImage src={require('../assets/image_1.png').default} alt="Image 1" />
+          <CarouselImage src={require('../assets/image_1.jpg').default} alt="Image 1" />
         </div>
         <div>
-          <CarouselImage src={require('../assets/image_2.png').default} alt="Image 2" />
+          <CarouselImage src={require('../assets/image_2.jpeg').default} alt="Image 2" />
         </div>
       </Slider>
     </CarouselWrapper>

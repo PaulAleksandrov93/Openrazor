@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
 
 const HeaderWrapper = styled.header`
@@ -14,6 +15,7 @@ const HeaderWrapper = styled.header`
   width: 100%;
   top: 0;
   z-index: 1000;
+  margin-bottom: 20px; /* Добавим нижний отступ, чтобы устранить наезд на Carousel */
 `;
 
 const Logo = styled.h1`
@@ -28,14 +30,39 @@ const Menu = styled.nav`
   width: 50%;
 `;
 
-const MenuItem = styled(Link)`
+const AnimatedLink = animated(Link);
+const AnimatedUserIcon = animated(FaUser);
+const AnimatedCartIcon = animated(FaShoppingCart);
+
+const AnimatedMenuItem = styled(AnimatedLink)`
   color: white;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  &:hover {
+    &:before {
+      transform: scaleX(1);
+    }
+  }
 `;
 
-const UserIcon = styled(FaUser)`
+const UserIcon = styled(AnimatedUserIcon)`
   font-size: 1.2em;
-  margin-left: -5px; /* Используем отрицательное значение для смещения влево */
+  margin-left: -5px;
 `;
 
 const CartWrapper = styled.div`
@@ -45,9 +72,9 @@ const CartWrapper = styled.div`
   margin-right: 40px;
 `;
 
-const CartIcon = styled(FaShoppingCart)`
+const CartIcon = styled(AnimatedCartIcon)`
   font-size: 1.2em;
-  margin-right: -5px; /* Используем отрицательное значение для смещения влево */
+  margin-right: -5px;
 `;
 
 const CartItemCount = styled.span`
@@ -59,26 +86,55 @@ const CartItemCount = styled.span`
 `;
 
 const Header = ({ cartItemCount }) => {
+  const menuItemProps = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  });
+
+  const userIconProps = useSpring({
+    transform: 'translateX(0)',
+    from: { transform: 'translateX(-20px)' },
+  });
+
+  const cartIconProps = useSpring({
+    transform: 'translateX(0)',
+    from: { transform: 'translateX(20px)' },
+  });
+
   return (
     <HeaderWrapper>
       <Logo>OpenRazor</Logo>
       <Menu>
-        <MenuItem to="/">Главная</MenuItem>
-        <MenuItem to="/news">Новости</MenuItem>
-        <MenuItem to="/catalog">Каталог товаров</MenuItem>
-        <MenuItem to="/articles">Статьи</MenuItem>
-        <MenuItem to="/contacts">Контакты</MenuItem>
-        <MenuItem to="/reviews">Отзывы и комментарии</MenuItem>
-        <MenuItem to="/payment">Оплата и доставка!!!</MenuItem>
+        <AnimatedMenuItem to="/" style={menuItemProps}>
+          Главная
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/news" style={menuItemProps}>
+          Новости
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/catalog" style={menuItemProps}>
+          Каталог товаров
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/articles" style={menuItemProps}>
+          Статьи
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/contacts" style={menuItemProps}>
+          Контакты
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/reviews" style={menuItemProps}>
+          Отзывы и комментарии
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/payment" style={menuItemProps}>
+          Оплата и доставка
+        </AnimatedMenuItem>
       </Menu>
       <CartWrapper>
-        <MenuItem to="/profile">
-          <UserIcon />
-        </MenuItem>
-        <MenuItem to="/cart">
-          <CartIcon />
+        <AnimatedMenuItem to="/profile" style={menuItemProps}>
+          <UserIcon style={userIconProps} />
+        </AnimatedMenuItem>
+        <AnimatedMenuItem to="/cart" style={menuItemProps}>
+          <CartIcon style={cartIconProps} />
           {cartItemCount > 0 && <CartItemCount>{cartItemCount}</CartItemCount>}
-        </MenuItem>
+        </AnimatedMenuItem>
       </CartWrapper>
     </HeaderWrapper>
   );

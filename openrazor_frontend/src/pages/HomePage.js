@@ -1,14 +1,19 @@
 import React from 'react';
-import Header from '../components/Header';
+import styled from 'styled-components';
 import Carousel from '../components/Carousel';
+
+const HomePageWrapper = styled.div`
+  h2 {
+    margin-top: 0;  // Убираем верхний отступ для заголовка
+  }
+`;
 
 const HomePage = () => {
   return (
-    <div>
-      <Header />
-      <Carousel />
+    <HomePageWrapper>
       <h2>Добро пожаловать в OpenRazor!</h2>
-    </div>
+      <Carousel />
+    </HomePageWrapper>
   );
 };
 
