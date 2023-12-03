@@ -11,7 +11,6 @@ const HomePageWrapper = styled.div`
 const HomePage = () => {
   return (
     <HomePageWrapper>
-      <h2>Добро пожаловать в OpenRazor!</h2>
       <Carousel />
     </HomePageWrapper>
   );
