@@ -13,10 +13,11 @@ RUN npm install
 RUN npm install -g nodemon
 
 # Копирование остальных файлов
-COPY openrazor_frontend/ .
+COPY openrazor_frontend /app/openrazor_frontend/
 
 # Запуск сборки
 RUN npm run build
 
 # Этап 2: Задание команды по умолчанию
 CMD ["npm", "run"]
+

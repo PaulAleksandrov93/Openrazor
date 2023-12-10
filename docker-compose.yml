@@ -22,6 +22,7 @@ services:
     volumes:
       - ./openrazor_backend:/app/openrazor_backend  
 
+
   frontend:
     build:
       context: .
