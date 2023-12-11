@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaPhone } from 'react-icons/fa';
 
 const HeaderWrapper = styled.header`
   background-color: rgba(51, 51, 51, 0.8);
   color: white;
-  padding: 10px;
+  padding: 20px 10px; /* Увеличенная высота хедера */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,12 +15,27 @@ const HeaderWrapper = styled.header`
   width: 100%;
   top: 0;
   z-index: 1000;
-  margin-bottom: 20px; /* Добавим нижний отступ, чтобы устранить наезд на Carousel */
+  margin-bottom: 20px;
 `;
 
 const Logo = styled.h1`
   margin: 0;
   font-family: 'YourDesiredFont', sans-serif;
+`;
+
+const PhoneNumberWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const PhoneNumberIcon = styled(FaPhone)`
+  font-size: 1.2em;
+  margin-right: 5px;
+`;
+
+const PhoneNumber = styled.span`
+  font-size: 1.2em;
+  color: white;
 `;
 
 const Menu = styled.nav`
@@ -60,6 +75,11 @@ const AnimatedMenuItem = styled(AnimatedLink)`
   }
 `;
 
+const EntryText = styled.span`
+  font-size: 0.9em;
+  margin-left: 5px;
+`;
+
 const UserIcon = styled(AnimatedUserIcon)`
   font-size: 1.2em;
   margin-left: -5px;
@@ -75,6 +95,11 @@ const CartWrapper = styled.div`
 const CartIcon = styled(AnimatedCartIcon)`
   font-size: 1.2em;
   margin-right: -5px;
+`;
+
+const CartText = styled.span`
+  font-size: 0.9em;
+  margin-left: 5px;
 `;
 
 const CartItemCount = styled.span`
@@ -103,6 +128,10 @@ const Header = ({ cartItemCount }) => {
 
   return (
     <HeaderWrapper>
+      <PhoneNumberWrapper>
+        <PhoneNumberIcon />
+        <PhoneNumber>+7 123 456 67 89</PhoneNumber>
+      </PhoneNumberWrapper>
       <Logo>OpenRazor</Logo>
       <Menu>
         <AnimatedMenuItem to="/" style={menuItemProps}>
@@ -126,13 +155,15 @@ const Header = ({ cartItemCount }) => {
         <AnimatedMenuItem to="/payment" style={menuItemProps}>
           Оплата и доставка
         </AnimatedMenuItem>
-      </Menu>
-      <CartWrapper>
+        </Menu>
+        <CartWrapper>
         <AnimatedMenuItem to="/profile" style={menuItemProps}>
           <UserIcon style={userIconProps} />
+          <EntryText>Войти</EntryText>
         </AnimatedMenuItem>
         <AnimatedMenuItem to="/cart" style={menuItemProps}>
           <CartIcon style={cartIconProps} />
+          <CartText>Корзина</CartText>
           {cartItemCount > 0 && <CartItemCount>{cartItemCount}</CartItemCount>}
         </AnimatedMenuItem>
       </CartWrapper>

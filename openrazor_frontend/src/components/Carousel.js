@@ -69,7 +69,7 @@ const Carousel = () => {
           <CarouselImage src="image_1.jpg" alt="Image 1" />
         </div>
         <div>
-          <CarouselImage src="image_2.jpeg" alt="Image 2" />
+          <CarouselImage src="image_2.jpg" alt="Image 2" />
         </div>
       </Slider>
     </CarouselWrapper>
