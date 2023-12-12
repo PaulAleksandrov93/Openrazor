@@ -1,114 +1,14 @@
+// Header.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import { FaUser, FaShoppingCart, FaPhone } from 'react-icons/fa';
-
-const HeaderWrapper = styled.header`
-  background-color: rgba(51, 51, 51, 0.8);
-  color: white;
-  padding: 20px 10px; /* Увеличенная высота хедера */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  margin-bottom: 20px;
-`;
-
-const Logo = styled.h1`
-  margin: 0;
-  font-family: 'YourDesiredFont', sans-serif;
-`;
-
-const PhoneNumberWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const PhoneNumberIcon = styled(FaPhone)`
-  font-size: 1.2em;
-  margin-right: 5px;
-`;
-
-const PhoneNumber = styled.span`
-  font-size: 1.2em;
-  color: white;
-`;
-
-const Menu = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-`;
+import './Header.css';
 
 const AnimatedLink = animated(Link);
 const AnimatedUserIcon = animated(FaUser);
 const AnimatedCartIcon = animated(FaShoppingCart);
-
-const AnimatedMenuItem = styled(AnimatedLink)`
-  color: white;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transform-origin: 100% 50%;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-out;
-  }
-
-  &:hover {
-    &:before {
-      transform: scaleX(1);
-    }
-  }
-`;
-
-const EntryText = styled.span`
-  font-size: 0.9em;
-  margin-left: 5px;
-`;
-
-const UserIcon = styled(AnimatedUserIcon)`
-  font-size: 1.2em;
-  margin-left: -5px;
-`;
-
-const CartWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  margin-right: 40px;
-`;
-
-const CartIcon = styled(AnimatedCartIcon)`
-  font-size: 1.2em;
-  margin-right: -5px;
-`;
-
-const CartText = styled.span`
-  font-size: 0.9em;
-  margin-left: 5px;
-`;
-
-const CartItemCount = styled.span`
-  background-color: red;
-  color: white;
-  padding: 2px 5px;
-  border-radius: 50%;
-  margin-left: 3px;
-`;
 
 const Header = ({ cartItemCount }) => {
   const menuItemProps = useSpring({
@@ -127,47 +27,53 @@ const Header = ({ cartItemCount }) => {
   });
 
   return (
-    <HeaderWrapper>
-      <PhoneNumberWrapper>
-        <PhoneNumberIcon />
-        <PhoneNumber>+7 123 456 67 89</PhoneNumber>
-      </PhoneNumberWrapper>
-      <Logo>OpenRazor</Logo>
-      <Menu>
-        <AnimatedMenuItem to="/" style={menuItemProps}>
-          Главная
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/news" style={menuItemProps}>
-          Новости
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/catalog" style={menuItemProps}>
-          Каталог товаров
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/articles" style={menuItemProps}>
-          Статьи
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/contacts" style={menuItemProps}>
-          Контакты
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/reviews" style={menuItemProps}>
-          Отзывы и комментарии
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/payment" style={menuItemProps}>
-          Оплата и доставка
-        </AnimatedMenuItem>
-        </Menu>
-        <CartWrapper>
-        <AnimatedMenuItem to="/profile" style={menuItemProps}>
-          <UserIcon style={userIconProps} />
-          <EntryText>Войти</EntryText>
-        </AnimatedMenuItem>
-        <AnimatedMenuItem to="/cart" style={menuItemProps}>
-          <CartIcon style={cartIconProps} />
-          <CartText>Корзина</CartText>
-          {cartItemCount > 0 && <CartItemCount>{cartItemCount}</CartItemCount>}
-        </AnimatedMenuItem>
-      </CartWrapper>
-    </HeaderWrapper>
+    <div className="HeaderContainer">
+      <div className="HeaderContentWrapper">
+        <div className="TopBlock">
+          <h1 className="Logo">OpenRazor</h1>
+          <div className="PhoneNumberWrapper">
+            <FaPhone className="PhoneNumberIcon" />
+            <span className="PhoneNumber">+7 123 456 67 89</span>
+          </div>
+        </div>
+        <div className="BottomBlock">
+          <nav className="Menu">
+            <AnimatedLink to="/" className="AnimatedMenuItem" style={menuItemProps}>
+              Главная
+            </AnimatedLink>
+            <AnimatedLink to="/news" className="AnimatedMenuItem" style={menuItemProps}>
+              Новости
+            </AnimatedLink>
+            <AnimatedLink to="/catalog" className="AnimatedMenuItem" style={menuItemProps}>
+              Каталог товаров
+            </AnimatedLink>
+            <AnimatedLink to="/articles" className="AnimatedMenuItem" style={menuItemProps}>
+              Статьи
+            </AnimatedLink>
+            <AnimatedLink to="/contacts" className="AnimatedMenuItem" style={menuItemProps}>
+              Контакты
+            </AnimatedLink>
+            <AnimatedLink to="/reviews" className="AnimatedMenuItem" style={menuItemProps}>
+              Отзывы и комментарии
+            </AnimatedLink>
+            <AnimatedLink to="/payment" className="AnimatedMenuItem" style={menuItemProps}>
+              Оплата и доставка
+            </AnimatedLink>
+          </nav>
+          <div className="IconWrapper">
+            <AnimatedLink to="/profile" className="AnimatedMenuItem" style={menuItemProps}>
+              <span className="EntryText">Войти</span>
+              <AnimatedUserIcon className="UserIcon" style={userIconProps} />
+            </AnimatedLink>
+            <AnimatedLink to="/cart" className="AnimatedMenuItem" style={menuItemProps}>
+              <span className="CartText">Корзина</span>
+              <AnimatedCartIcon className="CartIcon" style={cartIconProps} />
+              {cartItemCount > 0 && <span className="CartItemCount">{cartItemCount}</span>}
+            </AnimatedLink>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
