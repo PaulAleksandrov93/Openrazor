@@ -5,13 +5,17 @@
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 120px; 
   }
   
   .HeaderContentWrapper {
     margin: 0 8cm; /* Отступы по 8 см слева и справа */
   }
   
-  .TopBlock,
+  .TopBlock {
+    margin-top: 20px;
+  }
+
   .BottomBlock {
     display: flex;
     justify-content: space-between;

@@ -62,7 +62,7 @@ const Header = ({ cartItemCount }) => {
           </nav>
           <div className="IconWrapper">
             <AnimatedLink to="/profile" className="AnimatedMenuItem" style={menuItemProps}>
-              <span className="EntryText">Войти</span>
+              <span className="EntryText" style={{ marginRight: '20px' }}>Войти</span>
               <AnimatedUserIcon className="UserIcon" style={userIconProps} />
             </AnimatedLink>
             <AnimatedLink to="/cart" className="AnimatedMenuItem" style={menuItemProps}>

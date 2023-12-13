@@ -1,0 +1,39 @@
+.ArticlePageWrapper {
+    padding: 20px;
+}
+  
+.ArticlePageWrapper h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+  
+.ArticlePageWrapper .article-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+  
+.ArticlePageWrapper .article-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+  
+.ArticlePageWrapper .article-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+  
+.ArticlePageWrapper .article-item p {
+    margin-bottom: 10px;
+}
+  
+.ArticlePageWrapper .article-item strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+  
+.ArticlePageWrapper .article-item .created-at {
+    font-style: italic;
+}
