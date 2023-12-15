@@ -21,4 +21,4 @@ npm-debug.log
 *.sublime-project
 *.sublime-workspace
 
-debug.log
+.debug.log
