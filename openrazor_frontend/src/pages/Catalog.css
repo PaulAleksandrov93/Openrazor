@@ -1,0 +1,21 @@
+/* Catalog.css */
+
+.CatalogWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+.CategoryItem {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.CatalogWrapper {
+    margin-top: 160px;
+}
+  

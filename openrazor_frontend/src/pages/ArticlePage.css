@@ -37,3 +37,7 @@
 .ArticlePageWrapper .article-item .created-at {
     font-style: italic;
 }
+
+.ArticlePageWrapper {
+    margin-top: 160px;
+}

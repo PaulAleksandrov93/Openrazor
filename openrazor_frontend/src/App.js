@@ -5,6 +5,7 @@ import Footer from './components/Footer'; // Добавленный компон
 import HomePage from './pages/HomePage';
 import NewsPage from './pages/NewsPage';
 import ArticlePage from './pages/ArticlePage';
+import Catalog from './pages/Catalog';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -21,6 +22,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/catalog" element={<Catalog />} />
           <Route path="/articles" element={<ArticlePage />} />
         </Routes>
         <Footer /> 
