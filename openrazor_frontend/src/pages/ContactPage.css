@@ -1,0 +1,20 @@
+.contact-wrapper {
+    padding: 20px;
+    font-family: 'YourDesiredFont', sans-serif;
+}
+  
+.contact-header {
+    margin-bottom: 10px;
+}
+  
+.contact-info {
+    margin-bottom: 5px;
+}
+ 
+.loading-message {
+    font-size: 1.2em;
+}
+
+.contact-wrapper {
+    margin-top: 160px;
+}

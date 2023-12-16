@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import NewsPage from './pages/NewsPage';
 import ArticlePage from './pages/ArticlePage';
 import Catalog from './pages/Catalog';
+import ContactPage from './pages/ContactPage';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/articles" element={<ArticlePage />} />
+          <Route path="/contacts" element={<ContactPage />} />
         </Routes>
         <Footer /> 
       </AppWrapper>
