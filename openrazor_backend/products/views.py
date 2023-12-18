@@ -100,3 +100,23 @@ def search_products(request):
         return JsonResponse(serializer.data, safe=False)
 
     return JsonResponse({'error': 'No search query provided'}, status=400)
+
+@api_view(['GET'])
+def get_category_products(request, category_id):
+    try:
+        products = Product.objects.filter(category_id=category_id)
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response({'error': 'Внутренняя ошибка сервера'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+def get_product_in_category(request, category_id, product_id):
+    try:
+        product = Product.objects.get(id=product_id, category_id=category_id)
+        serializer = ProductSerializer(product, many=False)
+        return Response(serializer.data)
+    except Product.DoesNotExist:
+        return Response({'error': 'Товар не найден в указанной категории'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({'error': 'Внутренняя ошибка сервера'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

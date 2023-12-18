@@ -1,21 +1,37 @@
 /* Catalog.css */
-
 .CatalogWrapper {
-    max-width: 800px;
-    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  }
   
-.CategoryItem {
+  h2 {
+    font-size: 1.5em;
     margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.CatalogWrapper {
-    margin-top: 160px;
-}
+  }
   
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .CategoryItem,
+  .ProductItem {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .CategoryItem h3,
+  .ProductItem h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .ProductItem p {
+    margin: 0;
+    color: #555;
+  }
+  
+  .ProductItem p:first-of-type {
+    margin-top: 10px;
+  }
