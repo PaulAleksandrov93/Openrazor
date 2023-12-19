@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer'; // Добавленный компонент
+import Footer from './components/Footer'; 
 import HomePage from './pages/HomePage';
 import NewsPage from './pages/NewsPage';
 import ArticlePage from './pages/ArticlePage';
 import Catalog from './pages/Catalog';
 import ContactPage from './pages/ContactPage';
+import CategoriesList from './components/CategoriesList'; 
+import CategoryProducts from './pages/CategoryProducts'; 
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -23,11 +25,19 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/news" element={<NewsPage />} />
-          <Route path="/catalog" element={<Catalog />} />
+          <Route
+            path="/catalog/*"
+            element={
+              <Catalog>
+                <Route index element={<CategoriesList />} />
+                <Route path=":categoryId/*" element={<CategoryProducts />} />
+              </Catalog>
+            }
+          />
           <Route path="/articles" element={<ArticlePage />} />
           <Route path="/contacts" element={<ContactPage />} />
         </Routes>
-        <Footer /> 
+        <Footer />
       </AppWrapper>
     </Router>
   );
