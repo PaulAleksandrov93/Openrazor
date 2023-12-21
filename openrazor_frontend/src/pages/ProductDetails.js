@@ -31,7 +31,7 @@ const ProductDetails = () => {
   };
 
   if (!product) {
-    return <div>Loading...</div>; // Можете заменить на лоадер или другое сообщение о загрузке
+    return <div>Loading...</div>;
   }
 
   return (
