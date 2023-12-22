@@ -5,6 +5,15 @@ from .models import UserProfile
 from .serializers import UserProfileSerializer
 
 @api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        '/api/token',
+        '/api/token/refresh',
+    ]
+    
+    return Response(routes)
+
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_user_profiles(request):
     profiles = UserProfile.objects.all()
