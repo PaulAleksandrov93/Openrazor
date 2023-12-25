@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import get_user_profiles, get_user_profile, create_user_profile, update_user_profile, delete_user_profile, getRoutes
+from .views import get_user_profiles, get_user_profile, create_user_profile, update_user_profile, delete_user_profile, getRoutes, register_user
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -20,4 +20,5 @@ urlpatterns = [
     path('create_user_profile/', create_user_profile, name='create_user_profile'),
     path('update_user_profile/<int:pk>/', update_user_profile, name='update_user_profile'),
     path('delete_user_profile/<int:pk>/', delete_user_profile, name='delete_user_profile'),
+    path('register/', register_user, name='register_user'),
 ]

@@ -1,7 +1,7 @@
 // Header.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { FaUser, FaShoppingCart, FaPhone } from 'react-icons/fa';
 import './Header.css';
@@ -11,6 +11,8 @@ const AnimatedUserIcon = animated(FaUser);
 const AnimatedCartIcon = animated(FaShoppingCart);
 
 const Header = ({ cartItemCount }) => {
+  const navigate = useNavigate();
+
   const menuItemProps = useSpring({
     opacity: 1,
     from: { opacity: 0 },
@@ -61,10 +63,10 @@ const Header = ({ cartItemCount }) => {
             </AnimatedLink>
           </nav>
           <div className="IconWrapper">
-            <AnimatedLink to="/profile" className="AnimatedMenuItem" style={menuItemProps}>
+            <div className="AnimatedMenuItem" style={menuItemProps} onClick={() => navigate('/login')}>
               <span className="EntryText" style={{ marginRight: '20px' }}>Войти</span>
               <AnimatedUserIcon className="UserIcon" style={userIconProps} />
-            </AnimatedLink>
+            </div>
             <AnimatedLink to="/cart" className="AnimatedMenuItem" style={menuItemProps}>
               <span className="CartText">Корзина</span>
               <AnimatedCartIcon className="CartIcon" style={cartIconProps} />

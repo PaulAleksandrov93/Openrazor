@@ -1,5 +1,6 @@
+from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from .models import UserProfile
 from .serializers import UserProfileSerializer
@@ -56,3 +57,22 @@ def delete_user_profile(request, pk):
     profile = UserProfile.objects.get(id=pk)
     profile.delete()
     return Response('Профиль успешно удален!', status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def register_user(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+
+    if not username or not password:
+        return Response({'error': 'Username and password are required.'}, status=400)
+
+    user = User.objects.create_user(username=username, password=password)
+    user_profile_serializer = UserProfileSerializer(data={'user': user.id})
+    
+    if user_profile_serializer.is_valid():
+        user_profile_serializer.save()
+        return Response({'message': 'User registered successfully.'}, status=201)
+
+    user.delete()
+    return Response({'error': 'Registration failed.', 'details': user_profile_serializer.errors}, status=400)

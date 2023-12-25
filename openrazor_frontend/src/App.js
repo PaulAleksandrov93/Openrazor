@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage';
 import CategoriesList from './components/CategoriesList'; 
 import CategoryProducts from './pages/CategoryProducts'; 
 import ProductDetails from './pages/ProductDetails';
+import LoginPage from './pages/LoginPage';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -32,13 +33,13 @@ const App = () => {
               <Catalog>
                 <Route index element={<CategoriesList />} />
                 <Route path=":categoryId/*" element={<CategoryProducts />} />
-                {/* Добавляем маршрут для ProductDetails */}
                 <Route path=":categoryId/:productId" element={<ProductDetails />} />
               </Catalog>
             }
           />
           <Route path="/articles" element={<ArticlePage />} />
           <Route path="/contacts" element={<ContactPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Footer />
       </AppWrapper>
