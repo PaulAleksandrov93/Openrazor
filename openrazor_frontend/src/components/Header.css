@@ -1,154 +1,145 @@
+/* Header.css */
+
 .HeaderContainer {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    height: 120px; 
-  }
-  
-  .HeaderContentWrapper {
-    margin: 0 8cm; /* Отступы по 8 см слева и справа */
-  }
-  
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  height: 120px; 
+}
+
+.LogoImage {
+  width: 160px; /* Установите нужную ширину */
+  height: auto;
+  margin-right: 10px; /* Регулируйте отступ справа, если необходимо */
+  margin-top: 10px; /* Добавьте отступ сверху */
+  margin-left: 10px; /* Добавьте отступ слева */
+}
+
+.HeaderContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.TopBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.Logo {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.PhoneNumberWrapper {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.PhoneNumberIcon {
+  margin-right: 5px;
+}
+
+.BottomBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.Menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.AnimatedMenuItem {
+  padding: 10px;
+  margin: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.IconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.LoginWrapper,
+.CartWrapper {
+  margin-left: 10px;
+}
+
+.EntryText,
+.CartText {
+  margin-right: 5px;
+}
+
+.UserIcon,
+.CartIcon {
+  font-size: 20px;
+}
+
+.CartItemCount {
+  background-color: #fff;
+  color: #000;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.AnimatedMenuItem {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.AnimatedMenuItem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fff;  /* Цвет подчеркивания */
+  transition: width 0.3s ease;  /* Длительность и тип анимации */
+}
+
+.AnimatedMenuItem:hover::after {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
   .TopBlock {
-    margin-top: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .PhoneNumberWrapper {
+    margin-top: 10px;
   }
 
   .BottomBlock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .Logo {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-  }
-  
-  .PhoneNumberWrapper {
-    display: flex;
-    align-items: center;
-  }
-  
-  .PhoneNumberIcon {
-    font-size: 1.2em;
-    margin-right: 5px;
-  }
-  
-  .PhoneNumber {
-    font-size: 1.2em;
-    color: white;
-  }
-  
-  .Menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px; /* Добавил отступ сверху для выравнивания */
-  
-    @media (max-width: 768px) {
-      margin-top: 5px; /* Адаптивный отступ для маленьких экранов */
-    }
-  }
-  
-  .Menu a {
-    white-space: nowrap;
-    margin: 0 15px; /* Увеличил отступы между элементами для лучшего распределения */
-  
-    @media (max-width: 768px) {
-      margin: 5px 0;
-      font-size: 0.9em;
-    }
-  }
-  
-  .IconWrapper {
-    display: flex;
-    align-items: center;
-    margin-right: 15px; /* Увеличил отступ справа для выравнивания иконок */
-  
-    @media (max-width: 768px) {
-      margin-right: 0;
-      margin-top: 5px; /* Адаптивный отступ для маленьких экранов */
-    }
-  }
-  
-  .IconWrapper a {
-    white-space: nowrap;
-    margin-left: 5px; /* Добавил небольшой отступ между элементами */
-  
-    @media (max-width: 768px) {
-      margin-left: 0;
-      font-size: 0.9em;
-    }
-  }
-  
-  .AnimatedMenuItem {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .AnimatedMenuItem:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transform-origin: 100% 50%;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-out;
-  }
-  
-  .AnimatedMenuItem:hover:before {
-    transform: scaleX(1);
-  }
-  
-  .EntryText {
-    font-size: 0.9em;
-    margin-left: 5px;
-  }
-  
-  .UserIcon {
-    font-size: 1.2em;
-    margin-left: -5px;
-  }
-  
-  .CartWrapper {
-    display: flex;
-    align-items: center;
-  }
-  
-  .CartIcon {
-    font-size: 1.2em;
-    margin-right: 5px;
-  }
-  
-  .CartText {
-    font-size: 0.9em;
-    margin-left: 5px;
-  }
-  
-  .CartItemCount {
-    background-color: red;
-    color: white;
-    padding: 2px 5px;
-    border-radius: 50%;
-    margin-left: 3px;
+    flex-direction: column;
   }
 
-  .EntryText {
-    margin-right: 5px; /* Добавил отступ между словом "Войти" и иконкой */
+  .LoginWrapper,
+  .CartWrapper {
+    margin-left: 0;
+    margin-top: 10px;
   }
-  
-  .CartText {
-    margin-right: 5px; /* Добавил отступ между словом "Корзина" и иконкой */
-  }
+}

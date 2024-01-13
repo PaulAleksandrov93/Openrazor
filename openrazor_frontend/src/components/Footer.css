@@ -1,0 +1,59 @@
+/* Footer.css */
+.footer-wrapper {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .block {
+    margin: 10px;
+  }
+  
+  .contact-block,
+  .address-block,
+  .social-block {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px; /* Уменьшаем отступ снизу */
+  }
+  
+  .contact-block h2,
+  .address-block h2,
+  .social-block h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .contact-block p,
+  .address-block p {
+    font-size: 1em;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+  }
+  
+  .social-link {
+    margin: 0 5px;
+    color: #fff;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: #fff;
+    }
+  }
+  
+  .social-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+  }

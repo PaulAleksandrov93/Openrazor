@@ -1,3 +1,5 @@
+// NewsPage.js
+
 import React, { useState, useEffect } from 'react';
 import './NewsPage.css';
 
@@ -24,7 +26,7 @@ const NewsPage = () => {
 
   return (
     <div className="news-block">
-      <h2>Latest News</h2>
+      <h2>Новости</h2>
       {news.map((item) => (
         <div key={item.id} className="news-item">
           <h3>{item.title}</h3>

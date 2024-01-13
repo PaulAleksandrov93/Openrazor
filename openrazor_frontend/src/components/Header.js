@@ -4,7 +4,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { FaUser, FaShoppingCart, FaPhone } from 'react-icons/fa';
+import logo from '../assets/logo_1.webp';
 import './Header.css';
+
 
 const AnimatedLink = animated(Link);
 const AnimatedUserIcon = animated(FaUser);
@@ -32,7 +34,7 @@ const Header = ({ cartItemCount }) => {
     <div className="HeaderContainer">
       <div className="HeaderContentWrapper">
         <div className="TopBlock">
-          <h1 className="Logo">OpenRazor</h1>
+          <img src={logo} alt="Logo" className="LogoImage" />
           <div className="PhoneNumberWrapper">
             <FaPhone className="PhoneNumberIcon" />
             <span className="PhoneNumber">+7 123 456 67 89</span>
@@ -63,15 +65,19 @@ const Header = ({ cartItemCount }) => {
             </AnimatedLink>
           </nav>
           <div className="IconWrapper">
-            <div className="AnimatedMenuItem" style={menuItemProps} onClick={() => navigate('/login')}>
-              <span className="EntryText" style={{ marginRight: '20px' }}>Войти</span>
-              <AnimatedUserIcon className="UserIcon" style={userIconProps} />
+            <div className="LoginWrapper">
+              <div className="AnimatedMenuItem" style={menuItemProps} onClick={() => navigate('/login')}>
+                <span className="EntryText">Войти</span>
+                <AnimatedUserIcon className="UserIcon" style={userIconProps} />
+              </div>
             </div>
-            <AnimatedLink to="/cart" className="AnimatedMenuItem" style={menuItemProps}>
-              <span className="CartText">Корзина</span>
-              <AnimatedCartIcon className="CartIcon" style={cartIconProps} />
-              {cartItemCount > 0 && <span className="CartItemCount">{cartItemCount}</span>}
-            </AnimatedLink>
+            <div className="CartWrapper">
+              <AnimatedLink to="/cart" className="AnimatedMenuItem" style={menuItemProps}>
+                <span className="CartText">Корзина</span>
+                <AnimatedCartIcon className="CartIcon" style={cartIconProps} />
+                {cartItemCount > 0 && <span className="CartItemCount">{cartItemCount}</span>}
+              </AnimatedLink>
+            </div>
           </div>
         </div>
       </div>

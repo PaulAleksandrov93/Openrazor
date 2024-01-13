@@ -1,5 +1,6 @@
 .ArticlePageWrapper {
     padding: 20px;
+    margin-top: 120px;
 }
   
 .ArticlePageWrapper h2 {
@@ -36,8 +37,4 @@
   
 .ArticlePageWrapper .article-item .created-at {
     font-style: italic;
-}
-
-.ArticlePageWrapper {
-    margin-top: 160px;
 }

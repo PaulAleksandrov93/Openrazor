@@ -1,6 +1,7 @@
 .contact-wrapper {
     padding: 20px;
     font-family: 'YourDesiredFont', sans-serif;
+    margin-top: 120px;
 }
   
 .contact-header {
@@ -13,8 +14,4 @@
  
 .loading-message {
     font-size: 1.2em;
-}
-
-.contact-wrapper {
-    margin-top: 160px;
 }

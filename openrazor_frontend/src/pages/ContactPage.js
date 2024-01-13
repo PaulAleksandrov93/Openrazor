@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import './ContactPage.css';
 
 const ContactPage = () => {
-  const [contact, setContact] = useState(null);
+  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    const fetchContact = async () => {
+    const fetchContacts = async () => {
       try {
         const response = await fetch('/api/contacts/');
         if (!response.ok) {
@@ -15,26 +15,30 @@ const ContactPage = () => {
         }
 
         const data = await response.json();
-        setContact(data);
+        setContacts(data);
       } catch (error) {
-        console.error('Error fetching contact:', error);
+        console.error('Error fetching contacts:', error);
       }
     };
 
-    fetchContact();
+    fetchContacts();
   }, []);
 
-  if (!contact) {
+  if (contacts.length === 0) {
     return <div className="loading-message">Loading...</div>;
   }
 
   return (
-    <div className="contact-wrapper">
-      <h2 className="contact-header">{contact.city} Contact Information</h2>
-      <p className="contact-info">Address: {contact.address}</p>
-      <p className="contact-info">Phone: {contact.phone}</p>
-      <p className="contact-info">Email: {contact.email}</p>
-      <p className="contact-info">Working Hours: {contact.working_hours}</p>
+    <div>
+      {contacts.map(contact => (
+        <div key={contact.id} className="contact-wrapper">
+          <h2 className="contact-header">{contact.city} Contact Information</h2>
+          <p className="contact-info">Address: {contact.address}</p>
+          <p className="contact-info">Phone: {contact.phone}</p>
+          <p className="contact-info">Email: {contact.email}</p>
+          <p className="contact-info">Working Hours: {contact.working_hours}</p>
+        </div>
+      ))}
     </div>
   );
 };
